@@ -1,0 +1,11 @@
+project AdaBinaryTree is
+
+   for Object_Dir use "build";
+   for Main use ("main.adb");
+
+   package Ide is
+      for Vcs_Kind use "Git";
+   end Ide;
+
+end AdaBinaryTree;
+
