@@ -1,22 +1,23 @@
 with Ada.Text_Io, Ada.Integer_Text_IO; use Ada.Text_Io, Ada.Integer_Text_IO;
 with Ada.Numerics.Discrete_Random;
 with Generic_Perm;
+with Ada.Unchecked_Deallocation;
 
 procedure Main is
    type Node;
-   type Node_Access is access Node; -- pointer
-   type Node is record -- definicja wezla
+   type Node_Access is access Node; -- typ wskazujacy na wezel
+   type Node is record -- typ wezla wraz z jego polami
       Left : Node_Access := null;
       Right : Node_Access := null;
       Value : Integer;
    end record;
-   Root : Node_Access := null; -- korzen
+   Root : Node_Access := null; -- korzen drzewa
    Nodes_Counter : Integer := 1; -- liczba node'ow
-   Iterations : Integer;
-   Current_Null_Number : Integer; -- liczba nulli w drzewie
-   Total_Null_Number : Integer;
+   Iterations : Integer; -- liczba iteracji
+   Current_Null_Number : Integer; -- liczba nulli w drzewie w trakcie wypelniania
+   Total_Null_Number : Integer; -- calkowita liczba nulli
 
-
+   -- procedura zammieniajaca dwie wartosci miejscami
    procedure Swap (A, B : in out Integer) is
       C : Integer := A;
    begin
@@ -24,6 +25,7 @@ procedure Main is
       B := C;
    end Swap;
 
+   -- zwraca wysokosc drzewa
    function Tree_Height( N : Node_Access ) return Integer is
       Left : Integer := 0;
       Right : Integer := 0;
@@ -41,6 +43,7 @@ procedure Main is
       end if;
    end Tree_Height;
 
+   -- zwraca liczbe wezlow drzewa
    function Tree_Elements( N : Node_Access ) return Integer is
       Left : Integer := 0;
       Right : Integer := 0;
@@ -52,7 +55,21 @@ procedure Main is
       end if;
    end Tree_Elements;
 
+   -- czysci drzewo
+   procedure Clear_Tree( N : in out Node_Access ) is
+   begin
+      declare
+         procedure Free is new Ada.Unchecked_Deallocation (Node, Node_Access);
+      begin
+         if N /= null then
+            Clear_Tree( N.Left );
+            Clear_Tree( N.Right );
+            Free(N);
+         end if;
+      end;
+   end Clear_Tree;
 
+   -- inicjalizuje Node na n-tej pozycji w drzewie
    procedure Set_Nth_Null( Current_Node : in out Node_Access; N : Integer ) is
    begin
       if Current_Node.Left = null then
@@ -84,6 +101,9 @@ procedure Main is
       end if;
    end Set_Nth_Null;
 
+   -- pierwsza metoda generowania drzewa
+   -- dla drzewa z n nullami kazdy null ma szanse 1/n
+   -- ze zostanie stworzony nowy node na jego miejsce
    procedure First_Method( Iteration_number : Integer ) is
       N : Integer;
       Current_Node : Node_Access := Root;
@@ -112,6 +132,9 @@ procedure Main is
       end;
    end First_Method;
 
+   -- druga metoda polegajaca na losowym bladzeniu w drzewie
+   -- idac w dol z prawdopodobienstwem 1/2 idziemy w prawo
+   -- z prawdopodobienstwem 1/2 w lewo
    procedure Second_Method( Iteration_number : Integer ) is
       Current_Node : Node_Access := Root;
       LoopFinished : Boolean := False ;
@@ -151,6 +174,9 @@ procedure Main is
          end loop;
       end loop;
    end Second_Method;
+
+   -- trzecia metoda, dla ktorej generujemy losowa permutacje
+   -- i na jej podstawie tworzymy drzewo przeszukiwan binarnych
    procedure Third_Method( Iteration_number : Integer ) is
       Done : Boolean := False;
       Current_Node : Node_Access := Root;
@@ -204,17 +230,30 @@ procedure Main is
       end;
    end Third_Method;
 
+   -- pokazuje statystyki dla drzewa
+   procedure Show_Stats is
+   begin
+      Put("Wysokosc drzewa:");
+      Put( Tree_Height(Root) );
+      New_Line;
+      Put("Elements");
+      Put( Tree_Elements(Root));
+      New_Line;
+   end Show_Stats;
 
 begin
    --Get (Iterations);
-   Iterations := 1000;
-   First_Method( Iterations );
-   --Second_Method( Iterations );
-   --Third_Method (Iterations);
-
-   Put("Wysokosc drzewa:");
-   Put( Tree_Height(Root) );
-   New_Line;
-   Put("Elements");
-   Put( Tree_Elements(Root));
+   Iterations := 10;
+   while Iterations <= 1000 loop
+      First_Method( Iterations );
+      Show_Stats;
+      Clear_Tree( Root );
+      Second_Method( Iterations );
+      Show_Stats;
+      Clear_Tree( Root );
+      Third_Method (Iterations);
+      Show_Stats;
+      Clear_Tree( Root );
+      Iterations := Iterations + 10;
+   end loop;
 end Main;
