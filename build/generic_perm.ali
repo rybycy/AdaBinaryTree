@@ -1,0 +1,38 @@
+V "GNAT Lib v2014"
+A -gnatA
+P ZX
+
+RN
+RV NO_IMPLEMENTATION_PRAGMAS
+RV SPARK_05
+
+U generic_perm%b	generic_perm.adb	ad99f6c2 NE OO PK GE
+
+U generic_perm%s	generic_perm.ads	4dbbf4d7 BN EE NE OO PK GE
+
+D generic_perm.ads	20141027094218 4dbbf4d7 generic_perm%s
+D generic_perm.adb	20141027094023 e0220215 generic_perm%b
+D system.ads		20140406181354 90249111 system%s
+X 1 generic_perm.ads
+2i4 N{positive} 4r43 2|29r12 51r12 59r12
+3k9*Generic_Perm 2z4 9l5 9e17 2|1b14 71l5 71t17
+4I12*Element{positive} 5r30 5r42 2|22r17
+5A9*Permutation(4I12)<integer> 7r34 8r35 2|4r34 13r35
+7U14*Set_To_First 7<27 7<47 2|4b14 11l8 11t20
+7a27 P{5A9} 2|4b27 6r16 7m10 9r18
+7b47 Is_Last{boolean} 2|4b47 9m7
+8U14*Go_To_Next 8=25 8<48 2|13b14 69l8 69t18
+8a25 P{5A9} 2|13b25 31r13 31r21 53m16 53r16 53m23 53r23 60r13 60r21 68m13
+. 68r13 68m20 68r20
+8b48 Is_Last{boolean} 2|13b48 28m7 33m13 45r10
+X 2 generic_perm.adb
+6i11 I{integer} 7r13 7r19
+15U17 Swap 15b17 15=23 15=26 20l11 20t15 53s10 68s7
+15i23 A{integer} 16r25 18m10
+15i26 B{integer} 18r15 19m10
+16i10 C{integer} 19r15
+22i7 I{1|4I12} 29m7 31r16 31r24 39r20 40m10 40r15 50r12 60r24 68r16
+22i10 J{1|4I12} 50m7 52r13 53r19 54m10 54r15 59m7 60r16 61m10 61r15 63m7
+. 63r12 68r23
+22i13 K{1|4I12} 51m7 52r17 53r26 55m10 55r15
+

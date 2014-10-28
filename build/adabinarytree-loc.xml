@@ -1,29 +1,41 @@
 <?xml version="1.0"?>
 <Locations >
+  <Project>
+    <vfs_file>/home/rybycy/AdaBinaryTree/adabinarytree.gpr</vfs_file>
+    <file_marker column=" 6" line=" 3" >
+      <vfs_file>/home/rybycy/AdaBinaryTree/main.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 14" line=" 1" >
+      <vfs_file>/home/rybycy/AdaBinaryTree/generic_perm.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 28" line=" 80" >
+      <vfs_file>/home/rybycy/AdaBinaryTree/main.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 9" line=" 3" >
+      <vfs_file>/home/rybycy/AdaBinaryTree/generic_perm.ads</vfs_file>
+    </file_marker>
+    <file_marker column=" 14" line=" 1" >
+      <vfs_file>/home/rybycy/AdaBinaryTree/generic_perm.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 7" line=" 92" >
+      <vfs_file>/home/rybycy/AdaBinaryTree/main.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 14" line=" 8" >
+      <vfs_file>/home/rybycy/AdaBinaryTree/generic_perm.ads</vfs_file>
+    </file_marker>
+    <file_marker column=" 13" line=" 87" >
+      <vfs_file>/home/rybycy/AdaBinaryTree/main.adb</vfs_file>
+    </file_marker>
+    <file_marker current="true" column=" 12" line=" 84" >
+      <vfs_file>/home/rybycy/AdaBinaryTree/main.adb</vfs_file>
+    </file_marker>
+  </Project>
   <Project >
-    <file_marker column=" 22" line=" 11" >
-      <vfs_file>/home/rybycy/AdaBinaryTree/tree_traversal.adb</vfs_file>
+    <file_marker column=" 6" line=" 3">
+      <vfs_file >/home/rybycy/AdaBinaryTree/main.adb</vfs_file>
     </file_marker>
-    <file_marker column=" 1" line=" 1" >
-      <vfs_file>/home/rybycy/AdaBinaryTree/tree_traversal.adb</vfs_file>
-    </file_marker>
-    <file_marker column=" 1" line=" 1" >
-      <vfs_file>/home/rybycy/AdaBinaryTree/main.adb</vfs_file>
-    </file_marker>
-    <file_marker column=" 21" line=" 3" >
-      <vfs_file>/home/rybycy/AdaBinaryTree/tree_traversal.adb</vfs_file>
-    </file_marker>
-    <file_marker column=" 9" line=" 45" >
-      <vfs_file>/usr/gnat/lib/gcc/x86_64-pc-linux-gnu/4.7.4/rts-native/adainclude/a-cdlili.ads</vfs_file>
-    </file_marker>
-    <file_marker column=" 21" line=" 3" >
-      <vfs_file>/home/rybycy/AdaBinaryTree/tree_traversal.adb</vfs_file>
-    </file_marker>
-    <file_marker column=" 9" line=" 45" >
-      <vfs_file>/usr/gnat/lib/gcc/x86_64-pc-linux-gnu/4.7.4/rts-native/adainclude/a-cdlili.ads</vfs_file>
-    </file_marker>
-    <file_marker current="true" column=" 1" line=" 1" >
-      <vfs_file>/home/rybycy/AdaBinaryTree/main.adb</vfs_file>
+    <file_marker current="true" column=" 14" line=" 1">
+      <vfs_file >/home/rybycy/AdaBinaryTree/generic_perm.adb</vfs_file>
     </file_marker>
   </Project>
   <Project >

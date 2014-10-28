@@ -15,13 +15,15 @@ RV NO_DEFAULT_INITIALIZATION
 RV NO_IMPLEMENTATION_PRAGMAS
 RV SPARK_05
 
-U main%b		main.adb		9ecf53c1 NE OO SU
+U main%b		main.adb		0eb1fbd4 NE OO SU
 W ada%s			ada.ads			ada.ali
 W ada.integer_text_io%s	a-inteio.ads		a-inteio.ali
 W ada.numerics%s	a-numeri.ads		a-numeri.ali
 W ada.numerics.discrete_random%s
 W ada.tags%s		a-tags.adb		a-tags.ali
 W ada.text_io%s		a-textio.adb		a-textio.ali
+W generic_perm%s	generic_perm.adb	generic_perm.ali
+W interfaces%s		interfac.ads		interfac.ali
 Z system%s		system.ads		system.ali
 Z system.random_numbers%s  s-rannum.adb		s-rannum.ali
 
@@ -38,9 +40,11 @@ D a-tags.ads		20140406181357 dc4d0634 ada.tags%s
 D a-textio.ads		20140406181359 386df5d4 ada.text_io%s
 D a-tiinio.ads		20140406181359 aa04e5d6 ada.text_io.integer_io%s
 D a-unccon.ads		20140406181359 f9eb8f06 ada.unchecked_conversion%s
+D generic_perm.ads	20141027094218 4dbbf4d7 generic_perm%s
+D generic_perm.adb	20141027094023 e0220215 generic_perm%b
 D interfac.ads		20140406181359 69adb1b9 interfaces%s
 D i-cstrea.ads		20140406181357 febc86ed interfaces.c_streams%s
-D main.adb		20141027085059 7f0606a3 main%b
+D main.adb		20141028122309 a2c35a61 main%b
 D system.ads		20140406181354 90249111 system%s
 D s-crtl.ads		20140406181356 2c012597 system.crtl%s
 D s-exctab.ads		20140406181354 54135002 system.exception_table%s
@@ -65,52 +69,80 @@ D s-unstyp.ads		20140406181356 510692af system.unsigned_types%s
 D s-valuns.ads		20140406181358 10a8ed3b system.val_uns%s
 D s-wchcon.ads		20140406181358 1b7d22d2 system.wch_con%s
 X 1 ada.ads
-16K9*Ada 19e8 16|1r6 1r19 1r44 1r57 2r6 38r31
+16K9*Ada 19e8 18|1r6 1r19 1r44 1r57 2r6 58r31 99r34
 X 4 a-inteio.ads
-18K13*Integer_Text_IO[12|46] 16|1w23 1r61
+18K13*Integer_Text_IO[12|46] 18|1w23 1r61
 X 6 a-numeri.ads
-16K13*Numerics 32e17 16|2r10 38r35
+16K13*Numerics 32e17 18|2r10 58r35 99r38
 X 7 a-nudira.ads
-44k22*Discrete_Random 73e33 16|2w19 38r44
-48R9 Generator<26|58R9> 16|39r23[38]
-50V13 Random{16|37I12} 16|54s29[38]
-53U14 Reset<26|95p14> 16|47s16[38]
+44k22*Discrete_Random 73e33 18|2w19 58r44 99r47
+48R9 Generator<28|58R9> 18|59r23[58] 100r26[99]
+50V13 Random{18|57I12} 18|73s29[58] 107s26[99] 112s31[99] 112s59[99]
+53U14 Reset<28|95p14> 18|67s16[58] 106s19[99]
 X 8 a-nudira.adb
-51V16 Random[26|78]{16|37I12} 27|390b13[16|38]
+51V16 Random[28|78]{integer} 29|390b13[18|99]
 X 11 a-textio.ads
-49K13*Text_IO 471e16 16|1w10 1r48
-166U14*New_Line 16|49s10 57s16 66s16
-242U14*Put 16|56s16 65s16 81s4
+49K13*Text_IO 471e16 18|1w10 1r48
+166U14*New_Line 18|116s10 154s4
+242U14*Put 18|152s4 155s4
 X 12 a-tiinio.ads
-56U14*Get 16|78s4[4|18]
-66U14*Put 16|82s4[4|18]
-X 14 interfac.ads
+66U14*Put 18|153s4[4|18] 156s4[4|18]
+X 14 generic_perm.ads
+3k9*Generic_Perm 9e17 18|3w6
+X 16 interfac.ads
 63M9*Unsigned_32
 66M9*Unsigned_64
-X 16 main.adb
-4U11*Main 4b11 83l5 83t9
-5R9 Node 6r31 7c9 10e14 43r19 59r44 68r45
-6P9 Node_Access(5R9) 8r14 9r15 11r11 16r30 34r22
-8p7 Left{6P9} 23r33 44m12 58r32 59m32 62r48
-9p7 Right{6P9} 24r34 45m12 67r32 68m32 71r48
-11p4 Root{6P9} 34r37 43m7 44r7 45r7 52r26 82r21
-12i4 Nodes_Counter{integer}
-13i4 Null_Counter{integer}
-14i4 Iterations{integer} 78m9 79r19
-16V13 Tree_Height{integer} 16b13 16>26 23s18 24s19 31l8 31t19 82s9
-16p26 N{6P9} 20r10 23r31 24r32
-17i7 Left{integer} 23m10 25r13 26r20
-18i7 Right{integer} 24m10 25r20 28r20
-33U14 Second_Method 33b14 33>29 76l8 76t21 79s4
-33i29 Iteration_number{integer} 48r20
-34p7 Current_Node{6P9} 52m10 58r19 59r19 62m19 62r35 67r19 68r19 71m19 71r35
-35b7 LoopFinished{boolean} 51m10 53r16 60m19 69m19
-36i7 Iter{integer} 48r13 50m10 50r18
-37I12 Rand_Range<short_short_integer> 38r60 40r13
-38K15 Rand_Int[7|44] 39r14 47r7 54r20
-39r7 seed{7|48R9[38]} 47r22 54r36
-40i7 Num{37I12} 54m13 55r16
-X 26 s-rannum.ads
-70V13*Random{14|63M9} 27|219i21
-71V13*Random{14|66M9} 27|219i21
+X 18 main.adb
+5U11*Main 5b11 157l5 157t9
+6R9 Node 7r31 8c9 12e14 63r19 76r44 83r45 114r22 125r47 133r48
+7P9 Node_Access(6R9) 9r14 10r15 13r11 25r30 42r32 54r22 94r22
+9p7 Left{7P9} 32r33 49r33 64m12 75r32 76m32 79r48 124r35 125m35 126r35 129r51
+10p7 Right{7P9} 33r34 49r57 65m12 82r32 83m32 86r48 132r35 133m35 134r35
+. 137r51
+11i7 Value{integer} 115m15 123r40 126m40 134m41
+13p4 Root{7P9} 54r37 63m7 64r7 65r7 71r26 94r37 114m10 115r10 117r26 121r29
+. 153r21 156r23
+14i4 Nodes_Counter{integer}
+15i4 Null_Counter{integer}
+16i4 Iterations{integer} 148m4 149r19
+18U14 Swap 18b14 18=20 18=23 23l8 23t12 112s13
+18i20 A{integer} 19r22 21m7
+18i23 B{integer} 21r12 22m7
+19i7 C{integer} 22r12
+25V13 Tree_Height{integer} 25b13 25>26 32s18 33s19 40l8 40t19 153s9
+25p26 N{7P9} 29r10 32r31 33r32
+26i7 Left{integer} 32m10 34r13 35r21
+27i7 Right{integer} 33m10 34r20 37r21
+42V13 Tree_Elements{integer} 42b13 42>28 49s17 49s41 51l8 51t21 156s9
+42p28 N{7P9} 46r10 49r31 49r55
+43i7 Left{integer}
+44i7 Right{integer}
+53U14 Second_Method 53b14 53>29 91l8 91t21 149s4
+53i29 Iteration_number{integer} 68r20
+54p7 Current_Node{7P9} 71m10 75r19 76r19 79m19 79r35 82r19 83r19 86m19 86r35
+55b7 LoopFinished{boolean} 70m10 72r16 77m19 84m19
+56i7 Iter{integer} 68r13 69m10 69r18
+57I12 Rand_Range<short_short_integer> 58r60 60r13
+58K15 Rand_Int[7|44] 59r14 67r7 73r20
+59r7 seed{7|48R9[58]} 67r22 73r36
+60i7 Num{57I12} 73m13 74r16
+92U14 Third_Method 92b14 92>28 143l8 143t20
+92i28 Iteration_number{integer} 98r50 102r49 108r39 111r39 119r36
+93b7 Done{boolean}
+94p7 Current_Node{7P9} 117m10 121m13 123r27 124r22 125r22 126r22 129m22 129r38
+. 132r22 133r22 134r22 137m22 137r38
+95b7 LoopFinished{boolean} 120m13 122r19 127m22 135m22
+98I18 Rand_Range{positive} 99r63 101r16 108r19 111r19
+99K18 Rand_Int[7|44] 100r17 106r10 107r17 112r22 112r50
+100r10 seed{7|48R9[99]} 106r25 107r33 112r38 112r66
+101i10 Num{98I18} 107m10
+102I18 Element{positive} 103r21 103r33
+103a10 P(102I18) 109m13 112m19 112r19 112m47 112r47 115r24 123r19 126r49
+. 134r50
+108i14 I{integer} 109r16 109r23
+111i14 I{integer}
+119i14 I{integer} 123r21 126r51 134r52
+X 28 s-rannum.ads
+70V13*Random{16|63M9} 29|219i21
+71V13*Random{16|66M9} 29|219i21
 
