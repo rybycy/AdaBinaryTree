@@ -12,8 +12,10 @@ procedure Main is
    end record;
    Root : Node_Access := null; -- korzen
    Nodes_Counter : Integer := 1; -- liczba node'ow
-   Null_Counter : Integer := 1 ; -- liczba nulli w drzewie
    Iterations : Integer;
+   Current_Null_Number : Integer; -- liczba nulli w drzewie
+   Total_Null_Number : Integer;
+
 
    procedure Swap (A, B : in out Integer) is
       C : Integer := A;
@@ -49,6 +51,66 @@ procedure Main is
          return Tree_Elements(N.Left) + Tree_Elements(N.Right) + 1;
       end if;
    end Tree_Elements;
+
+
+   procedure Set_Nth_Null( Current_Node : in out Node_Access; N : Integer ) is
+   begin
+      if Current_Node.Left = null then
+         if Current_Null_Number = N then
+            --Put("lewy");
+            Current_Null_Number := Current_Null_Number +1;
+            Current_Node.Left := new Node;
+
+         else
+            --Put("nierowny lewy");
+            Current_Null_Number := Current_Null_Number +1;
+         end if;
+      else
+         Set_Nth_Null(Current_Node.Left, N);
+      end if;
+
+      if Current_Node.Right = null then
+         if Current_Null_Number = N then
+            --Put("prawy");
+            Current_Null_Number := Current_Null_Number +1;
+            Current_Node.Right := new Node;
+
+         else
+            --Put("nierowny prawy");
+            Current_Null_Number := Current_Null_Number +1;
+         end if;
+      else
+         Set_Nth_Null(Current_Node.Right, N);
+      end if;
+   end Set_Nth_Null;
+
+   procedure First_Method( Iteration_number : Integer ) is
+      N : Integer;
+      Current_Node : Node_Access := Root;
+   begin
+      declare
+         subtype Rand_Range is Positive range 1..Iteration_number;
+         package Rand_Int is new Ada.Numerics.Discrete_Random(Rand_Range);
+         seed : Rand_Int.Generator;
+      begin
+         Rand_Int.Reset(seed);
+         Root := new Node;
+         Total_Null_Number := 2;
+
+         for I in Integer range 2..Iteration_number loop
+            Rand_Int.Reset(seed);
+            Current_Null_Number := 1;
+            N := Rand_Int.Random(seed) mod Total_Null_Number;
+            N := N + 1;
+            --Put("Szukam");
+            --Put(Current_Null_Number);
+            --New_Line;
+            Set_Nth_Null( Root, N );
+            Total_Null_Number := Total_Null_Number + 1;
+
+         end loop;
+      end;
+   end First_Method;
 
    procedure Second_Method( Iteration_number : Integer ) is
       Current_Node : Node_Access := Root;
@@ -146,7 +208,8 @@ procedure Main is
 begin
    --Get (Iterations);
    Iterations := 1000;
-   Second_Method( Iterations );
+   First_Method( Iterations );
+   --Second_Method( Iterations );
    --Third_Method (Iterations);
 
    Put("Wysokosc drzewa:");
