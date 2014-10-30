@@ -78,7 +78,7 @@ procedure Main is
             Current_Null_Number := Current_Null_Number +1;
             Current_Node.Left := new Node;
 
-         else
+         elsif Current_Null_Number < N then
             --Put("nierowny lewy");
             Current_Null_Number := Current_Null_Number +1;
          end if;
@@ -92,7 +92,7 @@ procedure Main is
             Current_Null_Number := Current_Null_Number +1;
             Current_Node.Right := new Node;
 
-         else
+         elsif Current_Null_Number < N then
             --Put("nierowny prawy");
             Current_Null_Number := Current_Null_Number +1;
          end if;
