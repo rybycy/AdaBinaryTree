@@ -1,6 +1,5 @@
 with Ada.Text_Io, Ada.Integer_Text_IO; use Ada.Text_Io, Ada.Integer_Text_IO;
 with Ada.Numerics.Discrete_Random;
-with Generic_Perm;
 with Ada.Unchecked_Deallocation;
 
 procedure Main is
@@ -14,6 +13,9 @@ procedure Main is
    Root : Node_Access := null; -- korzen drzewa
    Nodes_Counter : Integer := 1; -- liczba node'ow
    Iterations : Integer; -- liczba iteracji
+   Tries_counter : Integer;
+   Proba : Integer;
+   Res : Integer;
    Current_Null_Number : Integer; -- liczba nulli w drzewie w trakcie wypelniania
    Total_Null_Number : Integer; -- calkowita liczba nulli
 
@@ -77,7 +79,7 @@ procedure Main is
             --Put("lewy");
             Current_Null_Number := Current_Null_Number +1;
             Current_Node.Left := new Node;
-
+            return;
          else
             --Put("nierowny lewy");
             Current_Null_Number := Current_Null_Number +1;
@@ -91,7 +93,7 @@ procedure Main is
             --Put("prawy");
             Current_Null_Number := Current_Null_Number +1;
             Current_Node.Right := new Node;
-
+            return;
          else
             --Put("nierowny prawy");
             Current_Null_Number := Current_Null_Number +1;
@@ -201,7 +203,6 @@ procedure Main is
          end loop;
          Root := new Node;
          Root.Value := P(1);
-         New_Line;
          Current_Node := Root;
 
          for I in Integer range 2..Iteration_number loop
@@ -233,10 +234,8 @@ procedure Main is
    -- pokazuje statystyki dla drzewa
    procedure Show_Stats is
    begin
-      Put("Wysokosc drzewa:");
       Put( Tree_Height(Root) );
-      New_Line;
-      Put("Elements");
+      Put(" , ");
       Put( Tree_Elements(Root));
       New_Line;
    end Show_Stats;
@@ -244,16 +243,30 @@ procedure Main is
 begin
    --Get (Iterations);
    Iterations := 10;
+   Tries_counter := 1;
+
    while Iterations <= 1000 loop
-      First_Method( Iterations );
-      Show_Stats;
-      Clear_Tree( Root );
-      Second_Method( Iterations );
-      Show_Stats;
-      Clear_Tree( Root );
-      Third_Method (Iterations);
-      Show_Stats;
-      Clear_Tree( Root );
+      Proba := Tries_counter;
+      Res := 0;
+      while Proba > 0 loop
+         --First_Method( Iterations );
+         --Show_Stats;
+         --Clear_Tree( Root );
+         --Second_Method( Iterations );
+         --Show_Stats;
+         --Clear_Tree( Root );
+         Third_Method (Iterations);
+         --Show_Stats;
+         Res := Res + Tree_Height(Root);
+         Proba := Proba - 1;
+         Clear_Tree( Root );
+      end loop;
+      Res := Res / Tries_counter;
+      Put( Iterations );
+      Put(" , ");
+      Put( Res );
+      New_Line;
+
       Iterations := Iterations + 10;
    end loop;
 end Main;
