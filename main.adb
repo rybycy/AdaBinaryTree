@@ -17,14 +17,9 @@ begin
       Proba := Tries_counter;
       Res := 0;
       while Proba > 0 loop
-         --First_Method( Iterations );
-         --Show_Stats;
-         --Clear_Tree( Root );
-         --Second_Method( Iterations );
-         --Show_Stats;
-         --Clear_Tree( Root );
+         --Binary_Tree.First_Method( Iterations );
+         --Binary_Tree.Second_Method( Iterations );
          Binary_Tree.Third_Method (Iterations);
-         --Show_Stats;
          Res := Res + Binary_Tree.Tree_Height;
          Proba := Proba - 1;
          Binary_Tree.Clear_Tree;
