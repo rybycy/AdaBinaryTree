@@ -1,0 +1,96 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html><head>
+  <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript"/>
+
+  <title>
+    File: 
+  </title>
+  <link rel='stylesheet' href='support/docgen.css' type='text/css'/>
+  <link rel='stylesheet' href='support/tags.css' type='text/css'/>
+  <script src='support/docgen.js' type='text/javascript' charset='utf-8'></script>
+</head>
+<body onload="onloadDoc();">
+
+<div id='leftSide'>
+  <div id='leftSideInside'>
+  <div id='header'>
+    <h2 class="button">Documentation</h2>
+    <a href='toc.html'><div class="button2">Table of Contents</div></a>
+
+    <a href='tree.html'><div class="button2">Class Inheritance Tree</div></a>
+
+  </div>
+  </div>
+</div> <!-- leftSide -->
+
+<div class='subprograms'>
+  <div class='details'><ol><li id="l1"><pre><span class="keyword">with</span> Ada.Unchecked_Deallocation; </pre></li>
+<li id="l2"><pre><span class="keyword">with</span> Ada.Text_Io, Ada.Integer_Text_IO; <span class="keyword">use</span> Ada.Text_Io, Ada.Integer_Text_IO; </pre></li>
+<li id="l3"><pre><span class="keyword">with</span> Ada.Numerics.Discrete_Random; </pre></li>
+<li id="l4"><pre> </pre></li>
+<li id="l5"><pre> </pre></li>
+<li id="l6"><pre><span class="keyword">package</span> <span class="droplink">Binary_Tree<ul><li><a href="binary_tree.ads.html#binary_tree.ads:6:9" title="To API doc">To API doc</a></li><li><a href="src_binary_tree.adb.html#l1" title="To body">To body</a></li></ul></span> <span class="keyword">is</span> </pre></li>
+<li id="l7"><pre>   <span class="keyword">type</span> <span class="droplink">Node<ul><li><a href="binary_tree.ads.html#binary_tree.ads:7:9" title="To API doc">To API doc</a></li><li><a href="src_binary_tree.ads.html#l13" title="To body">To body</a></li></ul></span>; </pre></li>
+<li id="l8"><pre> </pre></li>
+<li id="l9"><pre>   <span class="comment">-- typ wskazujacy na wezel</span> </pre></li>
+<li id="l10"><pre>   <span class="keyword">type</span> <a href="binary_tree.ads.html#binary_tree.ads:10:9" title="defined at binary_tree.ads:10:9">Node_Access</a> <span class="keyword">is</span> <span class="keyword">access</span> <span class="droplink">Node<ul><li><a href="binary_tree.ads.html#binary_tree.ads:7:9" title="To API doc">To API doc</a></li><li><a href="src_binary_tree.ads.html#l7" title="To spec">To spec</a></li><li><a href="src_binary_tree.ads.html#l13" title="To body">To body</a></li></ul></span>; </pre></li>
+<li id="l11"><pre> </pre></li>
+<li id="l12"><pre>   <span class="comment">-- typ wezla wraz z jego polami</span> </pre></li>
+<li id="l13"><pre>   <span class="keyword">type</span> <span class="droplink">Node<ul><li><a href="binary_tree.ads.html#binary_tree.ads:7:9" title="To API doc">To API doc</a></li><li><a href="src_binary_tree.ads.html#l7" title="To spec">To spec</a></li></ul></span> <span class="keyword">is</span> <span class="keyword">record</span> </pre></li>
+<li id="l14"><pre>      Left : <span class="droplink">Node_Access<ul><li><a href="binary_tree.ads.html#binary_tree.ads:10:9" title="To API doc">To API doc</a></li><li><a href="src_binary_tree.ads.html#l10" title="To spec">To spec</a></li></ul></span> := <span class="keyword">null</span>; </pre></li>
+<li id="l15"><pre>      Right : <span class="droplink">Node_Access<ul><li><a href="binary_tree.ads.html#binary_tree.ads:10:9" title="To API doc">To API doc</a></li><li><a href="src_binary_tree.ads.html#l10" title="To spec">To spec</a></li></ul></span> := <span class="keyword">null</span>; </pre></li>
+<li id="l16"><pre>      Value : Integer; </pre></li>
+<li id="l17"><pre>   <span class="keyword">end</span> <span class="keyword">record</span>; </pre></li>
+<li id="l18"><pre> </pre></li>
+<li id="l19"><pre>   <span class="comment">-- korzen drzewa</span> </pre></li>
+<li id="l20"><pre>   <a href="binary_tree.ads.html#binary_tree.ads:20:4" title="defined at binary_tree.ads:20:4">Root</a> : <span class="droplink">Node_Access<ul><li><a href="binary_tree.ads.html#binary_tree.ads:10:9" title="To API doc">To API doc</a></li><li><a href="src_binary_tree.ads.html#l10" title="To spec">To spec</a></li></ul></span> := <span class="keyword">null</span>; </pre></li>
+<li id="l21"><pre>   <span class="comment">-- liczba wezlow</span> </pre></li>
+<li id="l22"><pre>   <a href="binary_tree.ads.html#binary_tree.ads:22:4" title="defined at binary_tree.ads:22:4">Nodes_Counter</a> : Integer := 1; </pre></li>
+<li id="l23"><pre> </pre></li>
+<li id="l24"><pre>   <span class="comment">-- liczba nulli w drzewie w trakcie wypelniania</span> </pre></li>
+<li id="l25"><pre>   <a href="binary_tree.ads.html#binary_tree.ads:25:4" title="defined at binary_tree.ads:25:4">Current_Null_Number</a> : Integer; </pre></li>
+<li id="l26"><pre> </pre></li>
+<li id="l27"><pre>   <span class="comment">-- calkowita liczba nulli</span> </pre></li>
+<li id="l28"><pre>   <a href="binary_tree.ads.html#binary_tree.ads:28:4" title="defined at binary_tree.ads:28:4">Total_Null_Number</a> : Integer; </pre></li>
+<li id="l29"><pre> </pre></li>
+<li id="l30"><pre>   <span class="comment">-- zamiana miejscami dwoch zmiennych</span> </pre></li>
+<li id="l31"><pre>   <span class="keyword">procedure</span> <span class="droplink">Swap<ul><li><a href="binary_tree.ads.html#binary_tree.ads:31:14" title="To API doc">To API doc</a></li><li><a href="src_binary_tree.adb.html#l4" title="To body">To body</a></li></ul></span> (<a href="binary_tree.ads.html#binary_tree.ads:31:20" title="defined at binary_tree.ads:31:20">A</a>, <a href="binary_tree.ads.html#binary_tree.ads:31:23" title="defined at binary_tree.ads:31:23">B</a> : <span class="keyword">in</span> <span class="keyword">out</span> Integer); </pre></li>
+<li id="l32"><pre> </pre></li>
+<li id="l33"><pre>   <span class="comment">-- zwraca wysokosc drzewa od korzenia</span> </pre></li>
+<li id="l34"><pre>   <span class="keyword">function</span> <span class="droplink">Tree_Height<ul><li><a href="binary_tree.ads.html#binary_tree.ads:34:13" title="To API doc">To API doc</a></li><li><a href="src_binary_tree.adb.html#l224" title="To body">To body</a></li></ul></span> <span class="keyword">return</span> Integer; </pre></li>
+<li id="l35"><pre> </pre></li>
+<li id="l36"><pre>   <span class="comment">-- Zwraca wysokosc drzewa od danego wezla</span> </pre></li>
+<li id="l37"><pre>   <span class="keyword">function</span> <span class="droplink">Subtree_Height<ul><li><a href="binary_tree.ads.html#binary_tree.ads:37:13" title="To API doc">To API doc</a></li><li><a href="src_binary_tree.adb.html#l12" title="To body">To body</a></li></ul></span>( <a href="binary_tree.ads.html#binary_tree.ads:37:29" title="defined at binary_tree.ads:37:29">N</a> : <span class="droplink">Node_Access<ul><li><a href="binary_tree.ads.html#binary_tree.ads:10:9" title="To API doc">To API doc</a></li><li><a href="src_binary_tree.ads.html#l10" title="To spec">To spec</a></li></ul></span> ) <span class="keyword">return</span> Integer; </pre></li>
+<li id="l38"><pre> </pre></li>
+<li id="l39"><pre>   <span class="comment">-- Zwraca liczbe elementow poddrzewa</span> </pre></li>
+<li id="l40"><pre>   <span class="keyword">function</span> <span class="droplink">Tree_Elements<ul><li><a href="binary_tree.ads.html#binary_tree.ads:40:13" title="To API doc">To API doc</a></li><li><a href="src_binary_tree.adb.html#l30" title="To body">To body</a></li></ul></span>( <a href="binary_tree.ads.html#binary_tree.ads:40:28" title="defined at binary_tree.ads:40:28">N</a> : <span class="droplink">Node_Access<ul><li><a href="binary_tree.ads.html#binary_tree.ads:10:9" title="To API doc">To API doc</a></li><li><a href="src_binary_tree.ads.html#l10" title="To spec">To spec</a></li></ul></span> ) <span class="keyword">return</span> Integer; </pre></li>
+<li id="l41"><pre> </pre></li>
+<li id="l42"><pre>   <span class="comment">--Czysci poddrzewo</span> </pre></li>
+<li id="l43"><pre>   <span class="keyword">procedure</span> <span class="droplink">Clear_Subtree<ul><li><a href="binary_tree.ads.html#binary_tree.ads:43:14" title="To API doc">To API doc</a></li><li><a href="src_binary_tree.adb.html#l42" title="To body">To body</a></li></ul></span>( <a href="binary_tree.ads.html#binary_tree.ads:43:29" title="defined at binary_tree.ads:43:29">N</a> : <span class="keyword">in</span> <span class="keyword">out</span> <span class="droplink">Node_Access<ul><li><a href="binary_tree.ads.html#binary_tree.ads:10:9" title="To API doc">To API doc</a></li><li><a href="src_binary_tree.ads.html#l10" title="To spec">To spec</a></li></ul></span> ); </pre></li>
+<li id="l44"><pre> </pre></li>
+<li id="l45"><pre>   <span class="comment">--Czysci drzewo od korzenia</span> </pre></li>
+<li id="l46"><pre>   <span class="keyword">procedure</span> <span class="droplink">Clear_Tree<ul><li><a href="binary_tree.ads.html#binary_tree.ads:46:14" title="To API doc">To API doc</a></li><li><a href="src_binary_tree.adb.html#l229" title="To body">To body</a></li></ul></span>; </pre></li>
+<li id="l47"><pre> </pre></li>
+<li id="l48"><pre>   <span class="comment">-- Znajduje n-tego nulla i na jego miejsce wklada nowy wezel</span> </pre></li>
+<li id="l49"><pre>   <span class="keyword">procedure</span> <span class="droplink">Set_Nth_Null<ul><li><a href="binary_tree.ads.html#binary_tree.ads:49:14" title="To API doc">To API doc</a></li><li><a href="src_binary_tree.adb.html#l56" title="To body">To body</a></li></ul></span>( <a href="binary_tree.ads.html#binary_tree.ads:49:28" title="defined at binary_tree.ads:49:28">Current_Node</a> : <span class="keyword">in</span> <span class="keyword">out</span> <span class="droplink">Node_Access<ul><li><a href="binary_tree.ads.html#binary_tree.ads:10:9" title="To API doc">To API doc</a></li><li><a href="src_binary_tree.ads.html#l10" title="To spec">To spec</a></li></ul></span>; <a href="binary_tree.ads.html#binary_tree.ads:49:63" title="defined at binary_tree.ads:49:63">N</a> : Integer ); </pre></li>
+<li id="l50"><pre> </pre></li>
+<li id="l51"><pre>   <span class="comment">-- Pierwsza metoda wypelniania drzewa - kazdy Null w drzewie jest losowany z identycznym prawdopodobienstwem</span> </pre></li>
+<li id="l52"><pre>   <span class="keyword">procedure</span> <span class="droplink">First_Method<ul><li><a href="binary_tree.ads.html#binary_tree.ads:52:14" title="To API doc">To API doc</a></li><li><a href="src_binary_tree.adb.html#l90" title="To body">To body</a></li></ul></span>( <a href="binary_tree.ads.html#binary_tree.ads:52:28" title="defined at binary_tree.ads:52:28">Iteration_number</a> : Integer ); </pre></li>
+<li id="l53"><pre> </pre></li>
+<li id="l54"><pre>   <span class="comment">-- Druga metoda - losowe bladzenie</span> </pre></li>
+<li id="l55"><pre>   <span class="keyword">procedure</span> <span class="droplink">Second_Method<ul><li><a href="binary_tree.ads.html#binary_tree.ads:55:14" title="To API doc">To API doc</a></li><li><a href="src_binary_tree.adb.html#l121" title="To body">To body</a></li></ul></span>( <a href="binary_tree.ads.html#binary_tree.ads:55:29" title="defined at binary_tree.ads:55:29">Iteration_number</a> : Integer ); </pre></li>
+<li id="l56"><pre> </pre></li>
+<li id="l57"><pre>   <span class="comment">-- Trzecia metoda - drzewo binarne na podstawie wygenerowanej permutacji</span> </pre></li>
+<li id="l58"><pre>   <span class="keyword">procedure</span> <span class="droplink">Third_Method<ul><li><a href="binary_tree.ads.html#binary_tree.ads:58:14" title="To API doc">To API doc</a></li><li><a href="src_binary_tree.adb.html#l163" title="To body">To body</a></li></ul></span>( <a href="binary_tree.ads.html#binary_tree.ads:58:28" title="defined at binary_tree.ads:58:28">Iteration_number</a> : Integer ); </pre></li>
+<li id="l59"><pre> </pre></li>
+<li id="l60"><pre>   <span class="comment">-- Pokazuje statystyki drzewa</span> </pre></li>
+<li id="l61"><pre>   <span class="keyword">procedure</span> <span class="droplink">Show_Stats<ul><li><a href="binary_tree.ads.html#binary_tree.ads:61:14" title="To API doc">To API doc</a></li><li><a href="src_binary_tree.adb.html#l216" title="To body">To body</a></li></ul></span>; </pre></li>
+<li id="l62"><pre> </pre></li>
+<li id="l63"><pre><span class="keyword">end</span> <span class="droplink">Binary_Tree<ul><li><a href="binary_tree.ads.html#binary_tree.ads:6:9" title="To API doc">To API doc</a></li><li><a href="src_binary_tree.ads.html#l6" title="To spec">To spec</a></li><li><a href="src_binary_tree.adb.html#l1" title="To body">To body</a></li></ul></span>; </pre></li>
+</ol></div>
+</div>
+
+</body>
+</html>
